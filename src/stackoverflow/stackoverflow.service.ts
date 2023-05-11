@@ -33,13 +33,13 @@ export class StackoverflowApiService {
         questionSearchURL.href,
       ),
     );
-    console.log('1', questionsResponse.data);
+
     if (!questionsResponse.data.items.length) {
       return null;
     }
 
     const targetQuestion = questionsResponse.data.items[0];
-    console.log('2', targetQuestion);
+
     if (!targetQuestion.answers.length) {
       return null;
     }
@@ -47,7 +47,7 @@ export class StackoverflowApiService {
     const targetAnswer =
       targetQuestion.answers.find((answer) => answer.is_accepted) ||
       targetQuestion.answers[0];
-    console.log('3', targetAnswer.body);
+
     return targetAnswer.body;
   }
 }
